@@ -1,5 +1,7 @@
 class Film
 
+  attr_reader :id
+
   def initialize(options)
     @id = options["id"]
     @title = options["title"]

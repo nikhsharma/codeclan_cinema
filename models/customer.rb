@@ -1,5 +1,7 @@
 class Customer
 
+  attr_reader :id
+
   def initialize(options)
     @id = options["id"]
     @name = options["name"]
