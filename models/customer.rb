@@ -1,9 +1,10 @@
 class Customer
 
   attr_reader :id
+  attr_writer :name, :funds
 
   def initialize(options)
-    @id = options["id"]
+    @id = options["id"].to_i
     @name = options["name"]
     @funds = options["funds"]
   end
@@ -12,7 +13,13 @@ class Customer
     sql = "INSERT INTO customers (name, funds) VALUES ($1, $2) RETURNING id;"
     values = [@name, @funds]
     result = SqlRunner.run(sql, values)
-    return result[0]["id"].to_i
+    @id = result[0]["id"].to_i
+  end
+
+  def update()
+    sql = "UPDATE customers SET (name, funds) = ($1, $2) WHERE id = $3;"
+    values = [@name, @funds, @id]
+    SqlRunner.run(sql, values)
   end
 
   def self.all()

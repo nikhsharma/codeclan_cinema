@@ -14,6 +14,7 @@ class Ticket
     return result[0]["id"].to_i
   end
 
+
   def self.all()
     sql = "SELECT * FROM tickets;"
     tickets = SqlRunner.run(sql)
