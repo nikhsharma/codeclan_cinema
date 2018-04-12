@@ -6,4 +6,9 @@ class Film
     @price = options["price"]
   end
 
+  def self.all()
+    sql = "SELECT * FROM films"
+    return SqlRunner.run(sql)
+  end
+
 end
