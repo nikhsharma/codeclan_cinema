@@ -1,7 +1,7 @@
 class Film
 
   attr_reader :id
-  attr_writer :title, :price
+  attr_accessor :title, :price
 
   def initialize(options)
     @id = options["id"].to_i
@@ -33,6 +33,17 @@ class Film
     values = [@id]
     customers = SqlRunner.run(sql, values)
     return customers.map {|customer| Customer.new(customer)}
+  end
+
+  def sell_ticket(customer_id)
+    new_ticket = Ticket.new(
+      {
+        "customer_id" => customer_id,
+        "film_id" => @id
+      }
+    )
+    
+    new_ticket.save()
   end
 
   def self.all()

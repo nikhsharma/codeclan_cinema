@@ -35,6 +35,12 @@ class Customer
     return films.map {|film| Film.new(film)}
   end
 
+  def buy_ticket(film)
+    @funds -= film.price
+    film.sell_ticket(@id)
+    self.update()
+  end
+
   def self.all()
     sql = "SELECT * FROM customers"
     customers =  SqlRunner.run(sql)
