@@ -46,10 +46,48 @@ film2 = Film.new(
 
 film2.save()
 
+screening1 = Screening.new(
+  {
+    "show_time" => "15:00",
+    "film_id" => film1.id
+  }
+)
+
+screening1.save()
+
+
+screening2 = Screening.new(
+  {
+    "show_time" => "20:00",
+    "film_id" => film1.id
+  }
+)
+
+screening2.save()
+
+screening3 = Screening.new(
+  {
+    "show_time" => "15:00",
+    "film_id" => film2.id
+  }
+)
+
+screening3.save()
+
+screening4 = Screening.new(
+  {
+    "show_time" => "20:00",
+    "film_id" => film2.id
+  }
+)
+
+screening4.save()
+
 ticket1 = Ticket.new(
   {
     "customer_id" => customer1.id,
-    "film_id" => film1.id
+    "film_id" => film1.id,
+    "screening_id" => screening2.id
   }
 )
 
@@ -58,7 +96,8 @@ ticket1.save()
 ticket2 = Ticket.new(
   {
     "customer_id" => customer1.id,
-    "film_id" => film2.id
+    "film_id" => film2.id,
+    "screening_id" => screening2.id
   }
 )
 
@@ -68,20 +107,114 @@ ticket2.save()
 ticket3 = Ticket.new(
   {
     "customer_id" => customer2.id,
-    "film_id" => film1.id
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
   }
 )
 
 ticket3.save()
 
-screening1 = Screening.new(
+ticket4 = Ticket.new(
   {
-    "show_time" => "15:00",
-    "ticket_id" => ticket1.id
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
   }
 )
 
-screening1.save()
+ticket4.save()
+
+ticket5 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket5.save()
+
+ticket6 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket6.save()
+
+ticket7 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket7.save()
+
+ticket8 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket8.save()
+
+
+ticket9 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket9.save()
+
+ticket10 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket10.save()
+
+ticket11 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket11.save()
+
+ticket12 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket12.save()
+
+ticket13 = Ticket.new(
+  {
+    "customer_id" => customer2.id,
+    "film_id" => film1.id,
+    "screening_id" => screening3.id
+  }
+)
+
+ticket13.save()
+
 
 
 binding.pry

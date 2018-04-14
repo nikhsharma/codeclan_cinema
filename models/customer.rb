@@ -35,10 +35,14 @@ class Customer
     return films.map {|film| Film.new(film)}
   end
 
-  def buy_ticket(film)
-    @funds -= film.price
-    film.sell_ticket(@id)
-    self.update()
+  def buy_ticket(film, screening)
+    if screening.sale_count < screening.ticket_limit
+      @funds -= film.price
+      film.sell_ticket(@id, screening)
+      self.update()
+    else
+      return "Sold Out."
+    end
   end
 
   def ticket_count()

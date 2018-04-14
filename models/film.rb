@@ -6,7 +6,7 @@ class Film
   def initialize(options)
     @id = options["id"].to_i
     @title = options["title"]
-    @price = options["price"]
+    @price = options["price"].to_i
   end
 
   def save()
@@ -35,19 +35,28 @@ class Film
     return customers.map {|customer| Customer.new(customer)}
   end
 
-  def sell_ticket(customer_id)
+  def sell_ticket(customer_id, screening)
     new_ticket = Ticket.new(
       {
         "customer_id" => customer_id,
-        "film_id" => @id
+        "film_id" => @id,
+        "screening_id" => screening.id
       }
     )
-
     new_ticket.save()
+    screening.sell_ticket()
   end
 
   def ticket_count()
     return customers().count
+  end
+
+  def most_popular_time()
+    sql = "SELECT * FROM screenings WHERE film_id = $1;"
+    values = [@id]
+    screenings = SqlRunner.run(sql, values)
+    screenings_array = screenings.map {|screening| Screening.new(screening)}
+    screenings_array.max_by {|screening| screening.sale_count}
   end
 
   def self.all()
