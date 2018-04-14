@@ -42,8 +42,12 @@ class Film
         "film_id" => @id
       }
     )
-    
+
     new_ticket.save()
+  end
+
+  def ticket_count()
+    return customers().count
   end
 
   def self.all()

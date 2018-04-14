@@ -41,6 +41,10 @@ class Customer
     self.update()
   end
 
+  def ticket_count()
+    return films().count
+  end
+
   def self.all()
     sql = "SELECT * FROM customers"
     customers =  SqlRunner.run(sql)
