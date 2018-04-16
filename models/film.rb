@@ -44,7 +44,6 @@ class Film
       }
     )
     new_ticket.save()
-    screening.sell_ticket()
   end
 
   def ticket_count()
